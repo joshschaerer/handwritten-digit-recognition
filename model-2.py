@@ -1,7 +1,7 @@
 """
-1st Model: Single Layer Perceptron
+2nd Model: Multi Layer Perceptron
 ----------------------------------
-This model is the most basic sequential model with 0 hidden layers in it.
+This model includes 1 hidden layer and 3 dense layers.
 Test accuracy: 0.92
 """
 
@@ -15,21 +15,25 @@ from tensorflow.keras import Sequential
 import matplotlib.pyplot as plt
 from dataset import x_train, y_train, x_test, y_test
 
-# Define the architecture of the model
-model_1 = Sequential()
+# Define the architecture of the model
+model_2 = Sequential()
+N_HIDDEN = 64
 
 # Add layers to the model
     # Input layer with 784 neurons
+    # Hidden layer with 64 neurons
     # Output layer with 10 neurons
-model_1.add(Dense(10, input_shape=(784,), name='dense_layer', activation='softmax')) 
+model_2.add(Dense(N_HIDDEN, input_shape=(784,), name="dense_layer", activation='relu')) # Input: 784 Neurons, Output: 64 Neurons
+model_2.add(Dense(N_HIDDEN, name="dense_layer_2", activation='relu')) # Input: 64 Neurons, Output: 64 Neurons
+model_2.add(Dense(10, name="dense_layer_3", activation='softmax')) # Input: 64 Neurons, Output: 10 Neurons
 
 # Compiling the model
-model_1.compile(optimizer='SGD', 
+model_2.compile(optimizer='SGD',
                 loss='categorical_crossentropy',
                 metrics=['accuracy'])
 
 # Training the model
-training = model_1.fit(x_train, y_train, batch_size=64, epochs=70, validation_split=0.2) 
+training = model_2.fit(x_train, y_train, batch_size=64, epochs=100, validation_split=0.2)
 
 # Print data in training
 print(training.history.keys())
@@ -53,5 +57,5 @@ plt.legend(['train', 'test'], loc='upper left')
 plt.show()
 
 # Evaluate the model
-test_loss, test_acc = model_1.evaluate(x_test, y_test)
+test_loss, test_acc = model_2.evaluate(x_test, y_test)
 print('Test accuracy:', test_acc)
