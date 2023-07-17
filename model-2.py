@@ -2,7 +2,7 @@
 2nd Model: Multi Layer Perceptron
 ----------------------------------
 This model includes 1 hidden layer and 3 dense layers.
-Test accuracy: 0.92
+Test accuracy: 0.97
 """
 
 # Import all libraries
