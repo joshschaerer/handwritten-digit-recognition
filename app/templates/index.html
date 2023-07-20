@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!--=============== CSS ===============-->
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/styles.css')}}" />
+
+    <!--=============== JS ===============-->
+    <script src="{{ url_for('static', filename='js/main.js')}}" defer></script>
+
+    <!--=============== METADATA ===============-->
+    <title>Handwritten Digit Recognition | by Joshua Schärer</title>
+    <meta
+      name="keywords"
+      content="Joshua Schärer, Joshua Schaerer, handwritten digit recognition, ai" />
+    <meta
+      name="description"
+      content="Check out Joshua Schärer's project on handwritten digit recognition. This site showcases my python implementation using a Deep Learning algorithm." />
+    <meta name="author" content="Joshua Schärer" />
+    <meta name="copyright" content="Joshua Schärer" />
+    <meta name="color-scheme" content="dark light" />
+  </head>
+  <body>
+    <!--==================== MAIN ====================-->
+    <main class="main" id="main">
+      <div class="container">
+        <section class="app section" id="app">
+          <h1 class="section__heading">Handwritten Digit Recgonition</h1>
+
+          <canvas
+            class="app__canvas"
+            id="canvas"
+            width="400px"
+            height="400px"></canvas>
+
+          <div class="app__menu">
+            <ul class="app__list list list--vertical">
+              <li class="list__item">One - 00.00%</li>
+              <li class="list__item">Two - 00.00%</li>
+              <li class="list__item">Three - 00.00%</li>
+              <li class="list__item">Four - 00.00%</li>
+              <li class="list__item">Five - 00.00%</li>
+              <li class="list__item">Six - 00.00%</li>
+              <li class="list__item">Seven - 00.00%</li>
+              <li class="list__item">Eight - 00.00%</li>
+              <li class="list__item">Nine - 00.00%</li>
+            </ul>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <!--==================== FOOTER ====================-->
+    <footer class="footer" id="footer">
+      <nav class="footer__nav container" id="footer-nav" aria-label="footer">
+        <div class="footer__menu">
+          <ul class="footer__list list">
+            <li class="list__item">
+              <a
+                target="_blank"
+                href="https://joshuaschaerer.ch"
+                class="link link--button">
+                by Joshua Schärer
+              </a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </footer>
+  </body>
+</html>
