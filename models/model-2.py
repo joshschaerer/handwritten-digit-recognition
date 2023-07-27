@@ -59,3 +59,6 @@ plt.show()
 # Evaluate the model
 test_loss, test_acc = model_2.evaluate(x_test, y_test)
 print('Test accuracy:', test_acc)
+
+# Save the model
+model_2.save('app/model.h5')

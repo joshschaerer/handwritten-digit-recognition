@@ -51,7 +51,7 @@ const sketch = (e) => {
   if (!isDrawing) return;
 
   ctx.beginPath();
-  ctx.lineWidth = 5;
+  ctx.lineWidth = 10;
   ctx.lineCap = "round";
   ctx.strokeStyle = getComputedStyle(document.documentElement).getPropertyValue(
     "--color-text"
@@ -64,4 +64,21 @@ const sketch = (e) => {
   ctx.lineTo(pos.x, pos.y);
 
   ctx.stroke();
+
+  // Fetch recognized digits from ai model
+  const options = {
+    headers: { "Content-Type": "application/json" },
+    method: "POST",
+    body: JSON.stringify(canvas.toDataURL()),
+  };
+  fetch("/", options)
+    .then((response) => response.json())
+    .then((data) => {
+      if (!data) return;
+      for (let i = 0; i < data[0].length; i++) {
+        document.getElementById(`item-${i}`).innerHTML = (
+          data[0][i] * 100
+        ).toFixed(2);
+      }
+    });
 };
