@@ -7,6 +7,7 @@
   /*Color mode HSL(hue, saturation, lightness)*/
   --color-white: 0, 0%, 100%;
   --color-black: 0, 0%, 2%;
+  --color-green: 135, 48%, 51%;
 
   --color-body: hsl(var(--color-white));
   --color-container: hsl(var(--color-black), 0.05);
@@ -27,6 +28,9 @@
   --margin-normal: clamp(1rem, 0.929rem + 0.357vw, 1.25rem);
   --margin-small: clamp(0.5rem, 0.357rem + 0.714vw, 1rem);
   --margin-tiny: clamp(0.25rem, 0.179rem + 0.357vw, 0.5rem);
+
+  /*========== Transitions ==========*/
+  --transition-cubic-bezier: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /*=============== THEME ===============*/
@@ -158,6 +162,22 @@ main {
 
 .app__menu {
   grid-area: menu;
+}
+
+.app__list {
+  position: relative;
+}
+
+.app__list li {
+  display: flex;
+  padding: var(--margin-tiny) var(--margin-small);
+  position: absolute;
+  transition: transform 0.3s var(--transition-cubic-bezier);
+  width: 100%;
+}
+
+.app__list li span:first-child {
+  flex: 1;
 }
 
 /*=============== FOOTER ===============*/
