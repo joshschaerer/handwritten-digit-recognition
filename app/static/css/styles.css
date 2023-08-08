@@ -68,7 +68,7 @@ textarea {
 
 h1 {
   font-size: var(--font-size-h1);
-  margin-bottom: var(--margin-normal);
+  margin-bottom: var(--margin-big);
 }
 
 a {
@@ -102,6 +102,10 @@ kbd {
   text-transform: uppercase;
 }
 
+.section__heading--center {
+  text-align: center;
+}
+
 /*========== Lists ==========*/
 .list {
   --gap: var(--margin-small);
@@ -117,7 +121,7 @@ kbd {
 }
 
 /*========== Icons ==========*/
-i::before {
+kbd i::before {
   vertical-align: middle;
 }
 
@@ -187,9 +191,9 @@ main {
   align-items: center;
   color: var(--color-text-light);
   display: flex;
+  gap: var(--margin-tiny);
   padding-inline: var(--margin-small);
   position: relative;
-  gap: var(--margin-tiny);
 }
 
 .canvas__list li:not(:first-child)::before {
@@ -207,6 +211,7 @@ main {
 }
 
 .app__list li {
+  border-radius: 0.25rem;
   display: flex;
   padding: var(--margin-tiny) var(--margin-small);
   position: absolute;
