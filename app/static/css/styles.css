@@ -210,15 +210,13 @@ main {
   position: relative;
 }
 
-.canvas__list li:not(:first-child)::before {
+.canvas__list li:not(:first-child, :nth-child(4))::before {
   content: "|";
   left: 0;
   position: absolute;
 }
 
-.canvas__list li:nth-child(2),
-.canvas__list li:nth-child(3),
-.canvas__list li:nth-child(4) {
+.canvas__list li:not(:nth-child(4), :nth-child(5)) {
   display: none;
 }
 
@@ -252,15 +250,13 @@ main {
     grid-template-columns: auto 1fr;
   }
 
-  .canvas__list li:nth-child(2),
-  .canvas__list li:nth-child(3),
-  .canvas__list li:nth-child(4) {
-    display: unset;
-  }
-
-  .canvas__list li:nth-child(1),
+  .canvas__list li:nth-child(4),
   .canvas__list li:nth-child(5) {
     display: none;
+  }
+
+  .canvas__list li:not(:nth-child(4), :nth-child(5)) {
+    display: unset;
   }
 
   .app__menu {
