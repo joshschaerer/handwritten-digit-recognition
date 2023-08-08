@@ -147,6 +147,18 @@ kbd i::before {
   background-color: var(--color-container);
 }
 
+.button {
+  background-color: var(--color-container);
+  border: unset;
+  border-radius: 0.25rem;
+  color: var(--color-text-light);
+  padding-inline: var(--margin-small);
+}
+
+.button:is(.link--active, :hover, :focus-visible) {
+  color: var(--color-text);
+}
+
 /*=============== MAIN ===============*/
 body {
   display: grid;
@@ -165,9 +177,10 @@ main {
   column-gap: var(--margin-big);
   display: grid;
   grid-template-areas:
-    "heading heading"
-    "canvas menu";
-  grid-template-columns: auto 1fr;
+    "heading"
+    "canvas"
+    "menu";
+  grid-template-columns: 1fr;
 }
 
 .app__canvas {
@@ -180,6 +193,7 @@ main {
 .app__canvas canvas {
   background-color: var(--color-container);
   border-radius: 0.25rem;
+  touch-action: none;
 }
 
 .canvas__list {
@@ -202,8 +216,15 @@ main {
   position: absolute;
 }
 
+.canvas__list li:nth-child(2),
+.canvas__list li:nth-child(3),
+.canvas__list li:nth-child(4) {
+  display: none;
+}
+
 .app__menu {
   grid-area: menu;
+  margin-top: var(--margin-normal);
 }
 
 .app__list {
@@ -221,6 +242,30 @@ main {
 
 .app__list li span:first-child {
   flex: 1;
+}
+
+@media (min-width: 768px) {
+  .app {
+    grid-template-areas:
+      "heading heading"
+      "canvas menu";
+    grid-template-columns: auto 1fr;
+  }
+
+  .canvas__list li:nth-child(2),
+  .canvas__list li:nth-child(3),
+  .canvas__list li:nth-child(4) {
+    display: unset;
+  }
+
+  .canvas__list li:nth-child(1),
+  .canvas__list li:nth-child(5) {
+    display: none;
+  }
+
+  .app__menu {
+    margin-top: unset;
+  }
 }
 
 /*=============== FOOTER ===============*/

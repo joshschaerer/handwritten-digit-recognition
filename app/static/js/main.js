@@ -14,26 +14,54 @@ const resetList = () => {
   }
 };
 
-// Setup all items
+/**
+ * Helper function to resize the list
+ * NOTE: Used to make the list responsive
+ */
+const resizeList = () => {
+  const itemHeight = list.children[0].getBoundingClientRect().height;
+  list.style.height = `${itemHeight * list.childElementCount}px`;
+};
+
+// Setup the list
 resetList();
+resizeList();
+
+// Wait for the content to load
+// NOTE: This is considered best practice
+window.addEventListener("load", function () {
+  // Calculate the height of the list
+  // NOTE: Recalculate on resize
+  window.addEventListener("resize", resizeList);
+});
 
 /*=============== CANVAS ===============*/
 // Access the canvas element
 const canvas = document.getElementById("canvas");
 // Access the canvas context
 const ctx = canvas.getContext("2d");
+// Access the canvas clear button
+const btnClear = document.getElementById("canvas-reset");
 
 // Wait for the content to load
 // NOTE: This is considered best practice
 window.addEventListener("load", function () {
-  canvas.addEventListener("mousedown", engage);
-  canvas.addEventListener("mousemove", sketch);
-  canvas.addEventListener("mouseup", disengage);
+  // Listen for pointer events
+  // NOTE: Used to support mouse, touch and pen input
+  canvas.addEventListener("pointerdown", engage);
+  canvas.addEventListener("pointermove", sketch);
+  canvas.addEventListener("pointerup", disengage);
+  // Listen for key events
   window.addEventListener("keyup", (e) => {
     if (e.key === "c") {
       resetList();
       ctx.clearRect(0, 0, canvas.width, canvas.height);
     }
+  });
+  // Listen for button events
+  btnClear.addEventListener("click", () => {
+    resetList();
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
   });
 });
 
