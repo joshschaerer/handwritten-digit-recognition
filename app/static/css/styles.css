@@ -79,6 +79,12 @@ ul {
   list-style: none;
 }
 
+kbd {
+  border: 1px solid var(--color-container);
+  border-radius: 0.25rem;
+  padding-inline: var(--margin-tiny);
+}
+
 /*=============== REUSABLE CSS CLASSES ===============*/
 /*========== Wrappers ==========*/
 .container {
@@ -108,6 +114,11 @@ ul {
   flex-direction: column;
   height: 100%;
   justify-content: space-between;
+}
+
+/*========== Icons ==========*/
+i::before {
+  vertical-align: middle;
 }
 
 /*========== Links / Buttons ==========*/
@@ -156,8 +167,35 @@ main {
 }
 
 .app__canvas {
-  background-color: var(--color-container);
+  display: flex;
+  flex-direction: column;
+  gap: var(--margin-small);
   grid-area: canvas;
+}
+
+.app__canvas canvas {
+  background-color: var(--color-container);
+  border-radius: 0.25rem;
+}
+
+.canvas__list {
+  gap: unset;
+  justify-content: center;
+}
+
+.canvas__list li {
+  align-items: center;
+  color: var(--color-text-light);
+  display: flex;
+  padding-inline: var(--margin-small);
+  position: relative;
+  gap: var(--margin-tiny);
+}
+
+.canvas__list li:not(:first-child)::before {
+  content: "|";
+  left: 0;
+  position: absolute;
 }
 
 .app__menu {

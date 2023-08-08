@@ -4,6 +4,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+    <!--=============== BOXICONS ===============-->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" />
+
     <!--=============== CSS ===============-->
     <link
       rel="stylesheet"
@@ -31,11 +36,31 @@
         <section class="app section" id="app">
           <h1 class="section__heading">Handwritten Digit Recgonition</h1>
 
-          <canvas
-            class="app__canvas"
-            id="canvas"
-            width="400px"
-            height="400px"></canvas>
+          <div class="app__canvas">
+            <canvas id="canvas" width="400px" height="400px"></canvas>
+
+            <div class="canvas__menu">
+              <ul class="canvas__list list">
+                <li class="list__item">
+                  <i class="bx bx-mouse"></i>
+                  :
+                  <span>Draw</span>
+                </li>
+                <li class="list__item">
+                  <kbd><i class="bx bxs-up-arrow-alt"></i></kbd>
+                  +
+                  <i class="bx bx-mouse"></i>
+                  :
+                  <span>Erase</span>
+                </li>
+                <li class="list__item">
+                  <kbd>C</kbd>
+                  :
+                  <span>Clear</span>
+                </li>
+              </ul>
+            </div>
+          </div>
 
           <div class="app__menu">
             <ul class="app__list list list--vertical" id="app-list">

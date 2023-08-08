@@ -2,11 +2,20 @@
 // Access the list element
 const list = document.getElementById("app-list");
 
+/**
+ * Helper function to reset all items
+ */
+const resetList = () => {
+  for (let i = 0; i < list.childElementCount; i++) {
+    const item = list.children[i];
+    item.style.transform = `translateY(${100 * i}%)`;
+    item.style.backgroundColor = `unset`;
+    item.children.item(1).innerHTML = "0.00";
+  }
+};
+
 // Setup all items
-for (let i = 0; i < list.childElementCount; i++) {
-  const item = list.children[i];
-  item.style.transform = `translateY(${100 * i}%)`;
-}
+resetList();
 
 /*=============== CANVAS ===============*/
 // Access the canvas element
@@ -20,6 +29,12 @@ window.addEventListener("load", function () {
   canvas.addEventListener("mousedown", engage);
   canvas.addEventListener("mousemove", sketch);
   canvas.addEventListener("mouseup", disengage);
+  window.addEventListener("keyup", (e) => {
+    if (e.key === "c") {
+      resetList();
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+    }
+  });
 });
 
 // Initial position
@@ -53,8 +68,11 @@ const recognizeDigit = () => {
       // NOTE: Used to reorder list items
       const sorted = [...data[0]].sort((a, b) => b - a);
       for (let i = 0; i < data[0].length; i++) {
+        // Access elements
         var item = document.getElementById(`item-${i}`);
         var parent = item.parentElement;
+
+        // Update elements
         item.innerHTML = (data[0][i] * 100).toFixed(2);
         parent.style.transform = `translateY(${
           100 * sorted.indexOf(data[0][i])
@@ -103,6 +121,7 @@ const disengage = () => {
 const sketch = (e) => {
   if (!isDrawing) return;
 
+  // Define drawing style
   ctx.beginPath();
   ctx.lineWidth = 10;
   ctx.lineCap = "round";
@@ -110,11 +129,19 @@ const sketch = (e) => {
     "--color-text"
   );
 
+  // Detect key input
+  // NOTE: Used to toggle between drawing and erasing
+  ctx.globalCompositeOperation = "source-over"; // Default
+  if (e.shiftKey) ctx.globalCompositeOperation = "destination-out";
+
+  // Draw on canvas
   ctx.moveTo(pos.x, pos.y);
   pos = getPos(e);
   ctx.lineTo(pos.x, pos.y);
   ctx.stroke();
 
+  // Recognize digit
+  // NOTE: Also throttle number of requests
   if (isFetching) return;
   recognizeDigit();
 };
