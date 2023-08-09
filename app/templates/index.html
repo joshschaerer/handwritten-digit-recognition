@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!--=============== BOXICONS ===============-->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" />
+
+    <!--=============== CSS ===============-->
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/styles.css')}}" />
+
+    <!--=============== JS ===============-->
+    <script src="{{ url_for('static', filename='js/main.js')}}" defer></script>
+
+    <!--=============== METADATA ===============-->
+    <title>Handwritten Digit Recognition | by Joshua Schärer</title>
+    <meta
+      name="keywords"
+      content="Joshua Schärer, Joshua Schaerer, handwritten digit recognition, ai" />
+    <meta
+      name="description"
+      content="Check out Joshua Schärer's project on handwritten digit recognition. This site showcases my python implementation using a Deep Learning algorithm." />
+    <meta name="author" content="Joshua Schärer" />
+    <meta name="copyright" content="Joshua Schärer" />
+    <meta name="color-scheme" content="dark light" />
+  </head>
+  <body>
+    <!--==================== MAIN ====================-->
+    <main class="main" id="main">
+      <div class="container">
+        <section class="app section" id="app">
+          <h1 class="section__heading section__heading--center">
+            Handwritten Digit Recgonition
+          </h1>
+
+          <div class="app__canvas">
+            <canvas id="canvas" width="400px" height="400px"></canvas>
+
+            <div class="canvas__menu">
+              <ul class="canvas__list list">
+                <li class="list__item">
+                  <i class="bx bx-mouse"></i>
+                  :
+                  <span>Draw</span>
+                </li>
+                <li class="list__item">
+                  <kbd><i class="bx bxs-up-arrow-alt"></i></kbd>
+                  +
+                  <i class="bx bx-mouse"></i>
+                  :
+                  <span>Erase</span>
+                </li>
+                <li class="list__item">
+                  <kbd>C</kbd>
+                  :
+                  <span>Clear</span>
+                </li>
+                <li class="list__item">
+                  <i class="bx bx-pencil"></i>
+                  :
+                  <span>Draw</span>
+                </li>
+                <li class="list__item">
+                  <button class="button" id="canvas-reset">Clear</button>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="app__menu">
+            <ul class="app__list list list--vertical" id="app-list">
+              <li class="list__item">
+                <span>Zero</span>
+                <span id="item-0">00.00</span>
+                %
+              </li>
+              <li class="list__item">
+                <span>One</span>
+                <span id="item-1">00.00</span>
+                %
+              </li>
+              <li class="list__item">
+                <span>Two</span>
+                <span id="item-2">00.00</span>
+                %
+              </li>
+              <li class="list__item">
+                <span>Three</span>
+                <span id="item-3">00.00</span>
+                %
+              </li>
+              <li class="list__item">
+                <span>Four</span>
+                <span id="item-4">00.00</span>
+                %
+              </li>
+              <li class="list__item">
+                <span>Five</span>
+                <span id="item-5">00.00</span>
+                %
+              </li>
+              <li class="list__item">
+                <span>Six</span>
+                <span id="item-6">00.00</span>
+                %
+              </li>
+              <li class="list__item">
+                <span>Seven</span>
+                <span id="item-7">00.00</span>
+                %
+              </li>
+              <li class="list__item">
+                <span>Eight</span>
+                <span id="item-8">00.00</span>
+                %
+              </li>
+              <li class="list__item">
+                <span>Nine</span>
+                <span id="item-9">00.00</span>
+                %
+              </li>
+            </ul>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <!--==================== FOOTER ====================-->
+    <footer class="footer" id="footer">
+      <nav class="footer__nav container" id="footer-nav" aria-label="footer">
+        <div class="footer__menu">
+          <ul class="footer__list list">
+            <li class="list__item">
+              <a
+                target="_blank"
+                href="https://joshuaschaerer.ch"
+                class="link link--button">
+                by Joshua Schärer
+              </a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </footer>
+  </body>
+</html>
